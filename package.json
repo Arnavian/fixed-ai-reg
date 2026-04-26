@@ -1,0 +1,9 @@
+{
+  "name": "ai-regulation-tool",
+  "version": "1.0.0",
+  "description": "AI regulation map with OpenAI backend",
+  "type": "module",
+  "dependencies": {
+    "openai": "^6.34.0"
+  }
+}
