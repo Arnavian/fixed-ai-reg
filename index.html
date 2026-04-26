@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Earth 3D Map</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqWd0_v63BJBbXMmgnxbCzb2wbh3Nz5Lw&libraries=maps"></script>
+</head>
+<body>
+    <div class="container">
+
+        <!-- LEFT: Control Panel -->
+        <div class="control-panel">
+            <h2>AI Regulations Checker around the World</h2>
+            
+            <div class="control-group">
+                <label>Search Location</label>
+                <input type="text" id="searchInput" placeholder="Enter address...">
+                <button id="searchBtn" class="btn btn-primary" style="width: 100%; margin-top: 8px;">
+                    Search
+                </button>
+            </div>
+
+            <div class="control-group">
+                <label>Zoom Level</label>
+                <input type="range" id="zoomSlider" min="1" max="21" step="1" value="4">
+                <span id="zoomValue">4</span>
+            </div>
+
+            <div class="control-group">
+                <label>
+                    <input type="checkbox" id="show3D" checked>
+                    Enable 3D View
+                </label>
+            </div>
+
+            <div class="control-group">
+                <label>
+                    <input type="checkbox" id="showSatellite" checked>
+                    Satellite View
+                </label>
+            </div>
+
+            <div class="control-group">
+                <label>
+                    <input type="checkbox" id="showTraffic">
+                    Show Traffic
+                </label>
+            </div>
+
+            <div class="button-group">
+                <button id="addMarkerBtn" class="btn btn-primary">+ Add Location</button>
+                <button id="resetBtn" class="btn btn-secondary">↻ Reset</button>
+            </div>
+
+            <hr>
+
+            <h3>📍 Locations</h3>
+            <div id="markerList" class="marker-list"></div>
+        </div>
+
+        <!-- CENTER: Map -->
+        <div id="canvas-container" class="canvas-container"></div>
+
+        <!-- RIGHT: Regulation Panel -->
+        <div class="info-panel">
+            <h3>⚖️ AI Regulation</h3>
+
+            <p><strong>Selected Country:</strong></p>
+            <p id="selectedCountry">Click a country on the map</p>
+
+            <hr>
+
+            <h4>Scores</h4>
+            <p><strong>Overall:</strong> <span id="overallScore">—</span></p>
+            <p><strong>Business Score:</strong> <span id="businessScore">—</span></p>
+            <p><strong>Consumer Score:</strong> <span id="consumerScore">—</span></p>
+
+            <hr>
+
+            <h4>Summary Cards</h4>
+            <div id="summaryCards" class="summary-cards"></div>
+
+            <hr>
+
+            <input 
+                id="regulationSearch" 
+                type="text" 
+                placeholder="Ask about this country's regulation..."
+            >
+
+            <button id="askRegulationBtn" class="btn btn-primary" style="width: 100%; margin-top: 8px;">
+                Ask
+            </button>
+
+            <div id="regulationAnswer" style="margin-top: 10px;"></div>
+
+            <p style="font-size: 11px; color: #999; margin-top: 10px;">
+                Scores are AI-generated estimates, not official legal ratings.
+            </p>
+
+            <!-- Hidden elements to keep existing JS working -->
+            <div style="display:none;">
+                <p id="currentLocation"></p>
+                <p id="zoomInfo">4</p>
+                <p id="objectCount">Locations: 0</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="3dmap.js"></script>
+</body>
+</html>
